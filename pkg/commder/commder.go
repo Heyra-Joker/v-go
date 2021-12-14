@@ -25,7 +25,7 @@ type Result struct {
 	StdErr  string
 }
 
-// Run Command at input cmd.
+// Command Run Command at input cmd.
 func Command(cmd string) (Result, error) {
 	res := Result{}
 	stdOutString := ""

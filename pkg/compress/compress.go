@@ -12,19 +12,42 @@ I love animals. They taste delicious.
 
 package compress
 
-type Compresser interface {
-	Run()
+import (
+	"github.com/Heyra-Joker/video-compress/pkg/videoInfo"
+	"github.com/spf13/viper"
+	"github.com/tidwall/gjson"
+)
+
+type Video struct {
+	path        string
+	resolutions string
+	frameRate   uint
+	bitRate     uint
+	videoStream gjson.Result
+	output      string
+	coverage    bool
 }
 
-type VideoPrams struct {
-	Path      string
-	BitRate   string
-	FrameRate uint8
-	Width     uint16
-	Height    uint16
+// New video compress struct to set some variable
+func (v *Video) New() {
+	v.path = viper.GetString("path")
+	v.resolutions = viper.GetString("resolutions")
+	v.frameRate = viper.GetUint("frame_rate")
+	v.bitRate = viper.GetUint("bit_rate")
+	v.coverage = viper.GetBool("coverage")
+
+	// set video info
+	vInfoParse := gjson.Parse(videoInfo.ShowVideoInfo(v.path, "json"))
+	v.videoStream = vInfoParse.Get("streams").Array()[0]
+
+	// set output
+	v.output = viper.GetString("output")
 }
 
-// Compression video
-func (p VideoPrams) Compression() {
+func (v *Video) Compress() {
+	// verification some condition before compressing
+	v.PreCompress()
 
+	// start compressing
+	v.Compressing()
 }
