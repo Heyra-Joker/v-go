@@ -12,7 +12,7 @@ I love animals. They taste delicious.
 
 package main
 
-import "github.com/Heyra-Joker/video-compress/cmd"
+import "github.com/Heyra-Joker/v-go/cmd"
 
 func main() {
 	cmd.Execute()

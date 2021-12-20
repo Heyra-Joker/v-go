@@ -13,8 +13,8 @@ I love animals. They taste delicious.
 package cmd
 
 import (
-	"github.com/Heyra-Joker/video-compress/pkg/judgement"
-	"github.com/Heyra-Joker/video-compress/pkg/videoInfo"
+	"github.com/Heyra-Joker/v-go/pkg/judgement"
+	"github.com/Heyra-Joker/v-go/pkg/videoInfo"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"os"

@@ -13,9 +13,9 @@ I love animals. They taste delicious.
 package cmd
 
 import (
-	"github.com/Heyra-Joker/video-compress/pkg/compress"
-	"github.com/Heyra-Joker/video-compress/pkg/judgement"
-	"github.com/Heyra-Joker/video-compress/pkg/youTubeNormal"
+	"github.com/Heyra-Joker/v-go/pkg/compress"
+	"github.com/Heyra-Joker/v-go/pkg/judgement"
+	"github.com/Heyra-Joker/v-go/pkg/youTubeNormal"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

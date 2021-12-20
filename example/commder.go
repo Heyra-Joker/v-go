@@ -15,7 +15,7 @@ package main
 import (
 	"log"
 
-	"github.com/Heyra-Joker/video-compress/pkg/commder"
+	"github.com/Heyra-Joker/v-go/pkg/commder"
 )
 
 func main() {

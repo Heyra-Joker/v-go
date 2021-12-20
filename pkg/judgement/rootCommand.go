@@ -18,7 +18,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/Heyra-Joker/video-compress/pkg/util"
+	"github.com/Heyra-Joker/v-go/pkg/util"
 	"github.com/fatih/color"
 	"github.com/spf13/viper"
 )
