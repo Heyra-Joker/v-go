@@ -13,7 +13,7 @@ I love animals. They taste delicious.
 package compress
 
 import (
-	"github.com/Heyra-Joker/video-compress/pkg/videoInfo"
+	"github.com/Heyra-Joker/v-go/pkg/videoInfo"
 	"github.com/spf13/viper"
 	"github.com/tidwall/gjson"
 )

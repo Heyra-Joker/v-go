@@ -15,10 +15,10 @@ package videoInfo
 import (
 	"errors"
 	"fmt"
-	"github.com/Heyra-Joker/video-compress/pkg/util"
+	"github.com/Heyra-Joker/v-go/pkg/util"
 	"io/ioutil"
 
-	"github.com/Heyra-Joker/video-compress/pkg/commder"
+	"github.com/Heyra-Joker/v-go/pkg/commder"
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 )

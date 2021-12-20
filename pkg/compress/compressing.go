@@ -15,9 +15,9 @@ package compress
 
 import (
 	"fmt"
-	"github.com/Heyra-Joker/video-compress/pkg/commder"
-	"github.com/Heyra-Joker/video-compress/pkg/util"
-	"github.com/Heyra-Joker/video-compress/pkg/youTubeNormal"
+	"github.com/Heyra-Joker/v-go/pkg/commder"
+	"github.com/Heyra-Joker/v-go/pkg/util"
+	"github.com/Heyra-Joker/v-go/pkg/youTubeNormal"
 	"github.com/fatih/color"
 )
 

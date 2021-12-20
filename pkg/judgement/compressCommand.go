@@ -15,7 +15,7 @@ package judgement
 
 import (
 	"errors"
-	"github.com/Heyra-Joker/video-compress/pkg/util"
+	"github.com/Heyra-Joker/v-go/pkg/util"
 	"github.com/fatih/color"
 	"strings"
 )
