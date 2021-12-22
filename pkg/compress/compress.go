@@ -19,13 +19,16 @@ import (
 )
 
 type Video struct {
-	path        string
-	resolutions string
-	frameRate   uint
-	bitRate     uint
-	videoStream gjson.Result
-	output      string
-	coverage    bool
+	path         string
+	resolutions  string
+	frameRate    uint
+	bitRate      uint
+	videoStream  gjson.Result
+	output       string
+	coverage     bool
+	isHorizontal bool
+	codeWidth    uint
+	codeHeight   uint
 }
 
 // New video compress struct to set some variable
@@ -39,6 +42,15 @@ func (v *Video) New() {
 	// set video info
 	vInfoParse := gjson.Parse(videoInfo.ShowVideoInfo(v.path, "json"))
 	v.videoStream = vInfoParse.Get("streams").Array()[0]
+
+	// set video width and height
+	v.codeWidth = uint(v.videoStream.Get("coded_width").Uint())
+	v.codeHeight = uint(v.videoStream.Get("coded_height").Uint())
+
+	// set video Direction
+	if v.codeWidth > v.codeHeight {
+		v.isHorizontal = true
+	}
 
 	// set output
 	v.output = viper.GetString("output")
