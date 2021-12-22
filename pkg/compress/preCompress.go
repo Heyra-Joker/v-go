@@ -33,18 +33,23 @@ func (v Video) PreCompress() {
 		util.CobraErr(msg)
 	}
 
-	// verify width and height
-	codeWidth := uint(v.videoStream.Get("coded_width").Uint())
-	codeHeight := uint(v.videoStream.Get("coded_height").Uint())
+	// coded_width < coded_height (Vertical video)
+	var codeWidth, codeHeight = v.codeWidth, v.codeHeight
+	var targetWidth, targetHeight = targetNormal.GetWidth(), targetNormal.GetHeight()
+	if !v.isHorizontal {
+		codeWidth = v.codeHeight
+		codeHeight = v.codeWidth
+	}
 
-	// non-acceptance
-	if targetNormal.GetWidth() > codeWidth || targetNormal.GetHeight() > codeHeight {
-		msg := `Video compression can only be done from high resolution to low resolution, your target (%dx%d) higher current (%dx%d)`
+	// non-acceptance:
+	// any situation video Direction is Horizontal
+	if targetWidth > codeWidth || targetHeight > codeHeight {
+		msg := `video compression can only be done from high resolution to low resolution, your target (%dx%d) higher current (%dx%d)`
 		msg = fmt.Sprintf(msg, targetNormal.GetWidth(), targetNormal.GetHeight(), codeWidth, codeHeight)
 		util.CobraErr(msg)
 	}
 
-	if targetNormal.GetWidth() == codeWidth && targetNormal.GetHeight() == codeHeight {
+	if targetWidth == codeWidth && targetHeight == codeHeight {
 		msg := `your target (%dx%d) resolution equal current (%dx%d), no action required`
 		color.Yellow(msg, targetNormal.GetWidth(), targetNormal.GetHeight(), codeWidth, codeHeight)
 		os.Exit(0)
