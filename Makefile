@@ -1,3 +1,5 @@
+default: help
+
 include script/make-rules/tools.mk
 
 BIN_NAME=v-go
@@ -13,7 +15,6 @@ endef
 
 # 导出环境变量,让任意 mk 文件均可使用
 export USAGE_OPTIONS
-
 
 ## checkDir: Make ./bin dir if not exists
 .PHONY: checkDir
