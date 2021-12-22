@@ -22,14 +22,16 @@ import (
 )
 
 // Specify the Height To Retain the Aspect Ratio
-const compressCmdPre = "ffmpeg -i %s -r %d -b:v %dk -vf scale=%d:%d -crf 28 %s"
+// https://dtbaker.net/blog/ffmpeg-width-or-height-not-divisible-by-2/
+//  tell ffmpeg to choose a number that’s divisible by 2 (instead of 1)
+const compressCmdPre = "ffmpeg -i %s -r %d -b:v %dk -vf scale=-2:%d -crf 28 %s"
 
 // Compressing video
 func (v Video) Compressing() {
 	key := fmt.Sprintf("%s@%d", v.resolutions, v.frameRate)
 	targetNormal, _ := youTubeNormal.GetYouTubeNormal(key)
 
-	cmd := fmt.Sprintf(compressCmdPre, v.path, v.frameRate, v.bitRate, targetNormal.GetWidth(), targetNormal.GetHeight(), v.output)
+	cmd := fmt.Sprintf(compressCmdPre, v.path, v.frameRate, v.bitRate, targetNormal.GetHeight(), v.output)
 	if v.coverage {
 		cmd += " -y"
 	}
